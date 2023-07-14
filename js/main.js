@@ -1,32 +1,34 @@
-const operations = {
-    add: (a, b) => a + b,
-    subtract: (a, b) => a - b,
-    multiply: (a, b) => a * b,
-    divide: (a, b) => a / b
-};
+import * as operations from './operations.js';
 
-let firstNum = 0;
-let operator;
-let secondNum;
+// parseInt(prompt('first num: '))
+
+let firstNum = 56.9;
+let operator = '+';
+let secondNum = 34.1231231231232123123123;
+
+const returnByOneDecimal = (value) => (value % 1 == 0 ? value : Math.round(value * 10) / 10);
 
 function operate(a, operator, b) {
     switch (operator) {
         case '+':
-            firstNum = operations.add(a, b);
+            firstNum = returnByOneDecimal(operations.add(a, b));
             break;
         case '-':
-            firstNum = operations.subtract(a, b);
+            firstNum = returnByOneDecimal(operations.subtract(a, b));
             break;
         case '*':
-            firstNum = operations.multiply(a, b);
+            firstNum = returnByOneDecimal(operations.multiply(a, b));
             break;
         case '/':
             if (b === 0) {
                 console.log('you cant divide by 0');
                 break;
             } else {
-                firstNum = operations.divide(a, b);
+                firstNum = returnByOneDecimal(operations.divide(a, b));
                 break;
             }
     }
 }
+
+operate(firstNum, operator, secondNum);
+console.log(firstNum);
