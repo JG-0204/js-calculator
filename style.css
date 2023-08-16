@@ -5,3 +5,27 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    border: 3px solid black;
+    width: 450px;
+    max-width: 95%;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.calculator-screen {
+    height: 20%;
+    background-color: cyan;
+}
+
+.calculator-body {
+    height: 80%;
+    background-color: black;
+}
