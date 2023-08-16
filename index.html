@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Calculator</title>
-      <link rel="icon" type="image/x-icon" href="favicon.png" />
-      <link rel="stylesheet" href="style.css" />
-      <script src="js/main.js" defer></script>
-   </head>
-   <body></body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculator</title>
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
+        <link rel="stylesheet" href="style.css" />
+        <script type="module" src="js/main.js"></script>
+        <script type="module" src="js/operations.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="calculator-screen">
+                <div class="screen-text">
+                    <p></p>
+                </div>
+            </div>
+            <div class="calculator-body">
+                <button type="button" id="clear">C</button>
+                <button type="button" id="backspace">←</button>
+                <button type="button">.</button>
+                <button type="button" class="operator">/</button>
+                <button type="button">7</button>
+                <button type="button">8</button>
+                <button type="button">9</button>
+                <button type="button" class="operator">*</button>
+                <button type="button">4</button>
+                <button type="button">5</button>
+                <button type="button">6</button>
+                <button type="button" class="operator">-</button>
+                <button type="button">1</button>
+                <button type="button">2</button>
+                <button type="button">3</button>
+                <button type="button" class="operator">+</button>
+                <button type="button" id="zero">0</button>
+                <button type="button" id="equal">=</button>
+            </div>
+        </div>
+    </body>
 </html>
