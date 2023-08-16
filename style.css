@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
 *,
 *::before,
 *::after {
@@ -13,7 +15,6 @@ body {
 }
 
 .container {
-    border: 3px solid black;
     width: 450px;
     max-width: 95%;
     height: 600px;
@@ -21,8 +22,28 @@ body {
 }
 
 .calculator-screen {
+    border-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     height: 20%;
-    background-color: cyan;
+    background-color: #505a65;
+    display: flex;
+    align-items: center;
+}
+
+.screen-text {
+    width: 90%;
+    height: 70%;
+    padding: 10px 0;
+    padding-right: 15px;
+    margin: 0 auto;
+    background-color: #caccc9;
+}
+
+.screen-text p {
+    font-size: 50px;
+    text-align: right;
+    font-family: 'Tektur', sans-serif;
 }
 
 .calculator-body {
