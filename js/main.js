@@ -1,8 +1,8 @@
 import * as operations from './operations.js';
 
 let firstNum = '';
-let operator;
-let secondNum;
+let operator = '';
+let secondNum = '';
 
 const returnByOneDecimal = (value) => (value % 1 == 0 ? value : Math.round(value * 10) / 10);
 
@@ -36,8 +36,17 @@ digits.forEach((digit) => {
         firstNum += digit.textContent;
         calculatorScreen.textContent = firstNum;
     });
+});
 
-    console.log(firstNum);
+const operators = document.querySelectorAll('.operator');
+
+operators.forEach((symbol) => {
+    symbol.addEventListener('click', () => {
+        secondNum = firstNum;
+        firstNum = '';
+        operator = symbol.textContent;
+        calculatorScreen.textContent = symbol.textContent;
+    });
 });
 
 /* to do:  
