@@ -1,10 +1,8 @@
 import * as operations from './operations.js';
 
-// parseInt(prompt('first num: '))
-
-let firstNum = 56.9;
-let operator = '+';
-let secondNum = 34.1231231231232123123123;
+let firstNum = '';
+let operator;
+let secondNum;
 
 const returnByOneDecimal = (value) => (value % 1 == 0 ? value : Math.round(value * 10) / 10);
 
@@ -30,5 +28,21 @@ function operate(a, operator, b) {
     }
 }
 
-operate(firstNum, operator, secondNum);
-console.log(firstNum);
+const digits = document.querySelectorAll('.number');
+const calculatorScreen = document.querySelector('.text');
+
+digits.forEach((digit) => {
+    digit.addEventListener('click', () => {
+        firstNum += digit.textContent;
+        calculatorScreen.textContent = firstNum;
+    });
+
+    console.log(firstNum);
+});
+
+/* to do:  
+ - dont let the users input  >1 decimal num
+
+ - backspace button/undo
+ - keyboard support
+*/
