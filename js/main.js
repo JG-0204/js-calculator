@@ -41,11 +41,18 @@ function operate() {
 
 const digits = document.querySelectorAll('.number');
 const calculatorScreen = document.querySelector('.text');
+const decimalPoint = document.getElementById('dot');
 
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
-        firstNum += digit.textContent;
-        calculatorScreen.textContent = firstNum;
+        if (digit == decimalPoint) {
+            firstNum += digit.textContent;
+            calculatorScreen.textContent = firstNum;
+            decimalPoint.disabled = true;
+        } else {
+            firstNum += digit.textContent;
+            calculatorScreen.textContent = firstNum;
+        }
     });
 });
 
@@ -53,6 +60,7 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((symbol) => {
     symbol.addEventListener('click', () => {
+        decimalPoint.disabled = false;
         evaluate();
         secondNum = firstNum;
         firstNum = '';
