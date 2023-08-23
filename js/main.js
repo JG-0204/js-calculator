@@ -67,6 +67,10 @@ function evaluate() {
     }
 }
 
+const equalKey = document.getElementById('equal');
+
+equalKey.addEventListener('click', operate);
+
 /* to do:  
  - dont let the users input  >1 decimal num
 
