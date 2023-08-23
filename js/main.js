@@ -6,26 +6,37 @@ let secondNum = '';
 
 const returnByOneDecimal = (value) => (value % 1 == 0 ? value : Math.round(value * 10) / 10);
 
-function operate(a, operator, b) {
+function operate() {
+    let num1 = parseFloat(secondNum);
+    let num2 = parseFloat(firstNum);
+
     switch (operator) {
         case '+':
-            firstNum = returnByOneDecimal(operations.add(a, b));
+            firstNum = returnByOneDecimal(operations.add(num1, num2));
+            calculatorScreen.textContent = firstNum;
             break;
         case '-':
-            firstNum = returnByOneDecimal(operations.subtract(a, b));
+            firstNum = returnByOneDecimal(operations.subtract(num1, num2));
+            calculatorScreen.textContent = firstNum;
             break;
         case '*':
-            firstNum = returnByOneDecimal(operations.multiply(a, b));
+            firstNum = returnByOneDecimal(operations.multiply(num1, num2));
+            calculatorScreen.textContent = firstNum;
             break;
         case '/':
-            if (b === 0) {
-                console.log('you cant divide by 0');
+            if (num2 === 0) {
+                calculatorScreen.textContent = 'Math Error';
+                firstNum = '';
                 break;
             } else {
-                firstNum = returnByOneDecimal(operations.divide(a, b));
+                firstNum = returnByOneDecimal(operations.divide(num1, num2));
+                calculatorScreen.textContent = firstNum;
                 break;
             }
     }
+
+    secondNum = '';
+    operator = '';
 }
 
 const digits = document.querySelectorAll('.number');
@@ -42,12 +53,19 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((symbol) => {
     symbol.addEventListener('click', () => {
+        evaluate();
         secondNum = firstNum;
         firstNum = '';
         operator = symbol.textContent;
-        calculatorScreen.textContent = symbol.textContent;
+        calculatorScreen.textContent = operator;
     });
 });
+
+function evaluate() {
+    if (secondNum !== '' && operator !== '') {
+        operate();
+    }
+}
 
 /* to do:  
  - dont let the users input  >1 decimal num
