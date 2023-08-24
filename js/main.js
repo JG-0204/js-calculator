@@ -37,6 +37,7 @@ function operate() {
 
     secondNum = '';
     operator = '';
+    removeDecimalPoint();
 }
 
 const digits = document.querySelectorAll('.number');
@@ -48,8 +49,9 @@ digits.forEach((digit) => {
         if (digit == decimalPoint) {
             firstNum += digit.textContent;
             calculatorScreen.textContent = firstNum;
-            decimalPoint.disabled = true;
+            removeDecimalPoint();
         } else {
+            removeDecimalPoint();
             firstNum += digit.textContent;
             calculatorScreen.textContent = firstNum;
         }
@@ -60,7 +62,6 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((symbol) => {
     symbol.addEventListener('click', () => {
-        decimalPoint.disabled = false;
         evaluate();
         secondNum = firstNum;
         firstNum = '';
@@ -79,9 +80,36 @@ const equalKey = document.getElementById('equal');
 
 equalKey.addEventListener('click', operate);
 
-/* to do:  
- - dont let the users input  >1 decimal num
+const clearKey = document.getElementById('clear');
 
+function clear() {
+    if (firstNum == '') {
+        return 0;
+    }
+    firstNum = '';
+    operator = '';
+    secondNum = '';
+    calculatorScreen.textContent = '';
+}
+
+clearKey.addEventListener('click', clear);
+
+const removeDecimalPoint = () =>
+    calculatorScreen.textContent.includes('.')
+        ? (decimalPoint.disabled = true)
+        : (decimalPoint.disabled = false);
+
+const undoKey = document.getElementById('undo');
+
+function undo() {
+    firstNum = firstNum.slice(0, -1);
+    calculatorScreen.textContent = firstNum;
+}
+
+undoKey.addEventListener('click', undo);
+
+/* to do:  
  - backspace button/undo
  - keyboard support
+ - refactor if you can
 */
