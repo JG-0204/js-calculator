@@ -108,8 +108,108 @@ function undo() {
 
 undoKey.addEventListener('click', undo);
 
+document.addEventListener('keydown', (event) => {
+    removeDecimalPoint();
+    let key = event.code;
+    console.log(key);
+    switch (key) {
+        case 'Numpad1':
+        case 'Digit1':
+            firstNum += '1';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad2':
+        case 'Digit2':
+            firstNum += '2';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad3':
+        case 'Digit3':
+            firstNum += '3';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad4':
+        case 'Digit4':
+            firstNum += '4';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad5':
+        case 'Digit5':
+            firstNum += '5';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad6':
+        case 'Digit6':
+            firstNum += '6';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad7':
+        case 'Digit7':
+            firstNum += '7';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad8':
+        case 'Digit8':
+            firstNum += '8';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad9':
+        case 'Digit9':
+            firstNum += '9';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'Numpad0':
+        case 'Digit1':
+            firstNum += '0';
+            calculatorScreen.textContent = firstNum;
+            break;
+        case 'NumpadDecimal':
+        case 'Period':
+            firstNum += '.';
+            calculatorScreen.textContent = firstNum;
+            removeDecimalPoint();
+            break;
+        case 'NumpadAdd':
+            evaluate();
+            secondNum = firstNum;
+            firstNum = '';
+            operator = '+';
+            calculatorScreen.textContent = operator;
+            break;
+        case 'NumpadSubtract':
+            evaluate();
+            secondNum = firstNum;
+            firstNum = '';
+            operator = '-';
+            calculatorScreen.textContent = operator;
+            break;
+        case 'NumpadMultiply':
+            evaluate();
+            secondNum = firstNum;
+            firstNum = '';
+            operator = '*';
+            calculatorScreen.textContent = operator;
+            break;
+        case 'NumpadDivide':
+            firstNum = calculatorScreen.textContent;
+            evaluate();
+            secondNum = firstNum;
+            firstNum = '';
+            operator = '/';
+            calculatorScreen.textContent = operator;
+            break;
+        case 'NumpadEnter':
+        case 'Equal':
+            operate();
+            break;
+        case 'Backspace':
+            undo();
+            break;
+    }
+    event.preventDefault();
+});
+
 /* to do:  
- - backspace button/undo
  - keyboard support
  - refactor if you can
 */
