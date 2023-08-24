@@ -33,24 +33,26 @@ body,
 }
 
 .calculator-screen {
-    height: 20%;
-    background-color: #505a65;
+    min-height: 20%;
+    height: auto;
+    background-color: #6bb3dd;
     border-radius: 1rem;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    word-break: break-all;
+    line-height: 0.9;
 }
 
-.screen-text {
-    width: 90%;
-    height: 70%;
-    padding: 10px 0;
-    padding-right: 15px;
+.calculator-screen p {
+    width: 100%;
+    padding: 15px;
+    padding-left: 5px;
     margin: 0 auto;
-    background-color: #caccc9;
-}
-
-.screen-text p {
+    background-color: #6bb3dd;
     text-align: right;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .calculator-body {
@@ -59,21 +61,22 @@ body,
     grid-template: repeat(5, 1fr) / repeat(4, 1fr);
     gap: 5px;
     padding: 10px;
-    border: 1px solid #f2f3f5;
+    border: 1px solid #42d3c0;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    background-color: #f2f3f5;
+    background-color: #42d3c0;
 }
 
 .calculator-body button {
     border: 1px solid #6b7c8c;
-    background-color: #6b7c8c;
+    background-color: #6475e2;
     cursor: pointer;
 }
 
-.calculator-body .operator {
-    background-color: #4e5462;
-    border-color: #4e5462;
+.calculator-body .operator,
+#equal {
+    background-color: #6bb3dd;
+    border-color: #6bb3dd;
 }
 
 #zero,
@@ -81,26 +84,25 @@ body,
     grid-column: span 2;
 }
 
-#equal,
 #clear,
-#backspace {
-    background-color: red;
-    border-color: red;
+#undo {
+    background-color: #e72841;
+    border-color: #e72841;
 }
 
-#equal:hover,
 #clear:hover,
-#backspace:hover {
-    background-color: rgba(255, 0, 0, 0.719);
-    border-color: rgba(255, 0, 0, 0.719);
+#undo:hover {
+    background-color: rgba(240, 22, 22, 0.904);
+    border-color: rgba(240, 22, 22, 0.904);
 }
 
-.operator:hover {
-    background-color: #4e5462e3;
-    border-color: #4e5462e3;
+.operator:hover,
+#equal:hover {
+    background-color: transparent;
+    border-color: transparent;
 }
 
-.calculator-body button:hover {
-    background-color: #6b7c8cde;
+.calculator-body button:not(.operator):hover {
+    background-color: #4255d38c;
     border-color: #6b7c8cde;
 }
