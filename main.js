@@ -70,13 +70,33 @@ function addOperator(value) {
     calculatorScreen.textContent = operator;
 }
 
+const isResetting = () => {
+    if (startNewInput) {
+        currentNum = '';
+        startNewInput = false;
+    }
+};
+
+const undo = () => {
+    currentNum = currentNum.slice(0, -1);
+    calculatorScreen.textContent = currentNum;
+};
+
+undoKey.addEventListener('click', undo);
+
+function evaluate() {
+    if (previousNum !== '' && operator !== '') {
+        operate();
+        startNewInput = true;
+    }
+}
+
+equalKey.addEventListener('click', evaluate);
+
 function eventListen() {
     digits.forEach((digit) => {
         digit.addEventListener('click', () => {
-            if (startNewInput) {
-                currentNum = '';
-                startNewInput = false;
-            }
+            isResetting();
             addDigit(digit.textContent);
             removeDecimalPoint();
         });
@@ -89,42 +109,53 @@ function eventListen() {
         });
     });
 
-    // keyboard supp (numpad)
     document.addEventListener('keydown', (event) => {
         removeDecimalPoint();
         let key = event.code;
+        console.log(key);
         switch (key) {
             case 'Numpad1':
+                isResetting();
                 addDigit('1');
                 break;
             case 'Numpad2':
+                isResetting();
                 addDigit('2');
                 break;
             case 'Numpad3':
+                isResetting();
                 addDigit('3');
                 break;
             case 'Numpad4':
+                isResetting();
                 addDigit('4');
                 break;
             case 'Numpad5':
+                isResetting();
                 addDigit('5');
                 break;
             case 'Numpad6':
+                isResetting();
                 addDigit('6');
                 break;
             case 'Numpad7':
+                isResetting();
                 addDigit('7');
                 break;
             case 'Numpad8':
+                isResetting();
                 addDigit('8');
                 break;
             case 'Numpad9':
+                isResetting();
                 addDigit('9');
                 break;
             case 'Numpad0':
+                isResetting();
                 addDigit('0');
                 break;
             case 'NumpadDecimal':
+                isResetting();
                 addDigit('.');
                 removeDecimalPoint();
                 break;
@@ -155,25 +186,11 @@ function eventListen() {
     });
 }
 
-function evaluate() {
-    if (previousNum !== '' && operator !== '') {
-        operate();
-        startNewInput = true;
-    }
-}
-
-equalKey.addEventListener('click', evaluate);
-
 clearKey.addEventListener('click', () => {
     currentNum = '';
     operator = '';
     previousNum = '';
     calculatorScreen.textContent = '';
-});
-
-undoKey.addEventListener('click', () => {
-    currentNum = currentNum.slice(0, -1);
-    calculatorScreen.textContent = currentNum;
 });
 
 eventListen();
